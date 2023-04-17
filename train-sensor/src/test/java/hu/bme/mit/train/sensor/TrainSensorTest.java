@@ -33,7 +33,7 @@ public class TrainSensorTest {
     {
         when(mocController.getReferenceSpeed()).thenReturn(150);
 
-        sensor.overrideSpeedLimit(50);
+        sensor.overrideSpeedLimit(100);
 
         verify(mocUser, times(1)).setAlarmState(true);   
     }
