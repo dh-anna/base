@@ -23,7 +23,7 @@ public class TrainSensorTest {
 
     @Test
     public void SetSpeedLimitToNegative() {
-        mocUser.setSpeedLimit(-1);
+        sensor.overrideSpeedLimit(-1);
 
         verify(mocUser, times(1)).setAlarmState(true); 
     }
@@ -33,8 +33,9 @@ public class TrainSensorTest {
   {
       when(mocController.getReferenceSpeed()).thenReturn(150);
 
-      mocUser.setSpeedLimit(50);
+      sensor.overrideSpeedLimit(50);
 
       verify(mocUser, times(1)).setAlarmState(true);   
-  } 
+  }
+
 }
