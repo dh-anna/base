@@ -16,8 +16,8 @@ public class TrainSensorTest {
 
     @Before
     public void before() {
-        mocController = mock(TrainControllerImpl.class);
-        mocUser = mock(TrainUserImpl.class);
+        mocController = mock(TrainController.class);
+        mocUser = mock(TrainUser.class);
         sensor = new TrainSensorImpl(mocController, mocUser); 
     }
 
@@ -27,4 +27,14 @@ public class TrainSensorTest {
 
         verify(mocUser, times(1)).setAlarmState(true); 
     }
+
+   @Test
+   public void SetSpeedLimitMuchLessAsReferenceSpeed()
+  {
+      when(mocController.getReferenceSpeed()).thenReturn(150);
+
+      mocUser.setSpeedLimit(50);
+
+      verify(mocUser, times(1)).setAlarmState(true);   
+  } 
 }
