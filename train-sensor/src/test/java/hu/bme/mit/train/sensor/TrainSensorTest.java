@@ -28,7 +28,7 @@ public class TrainSensorTest {
         verify(mocUser, times(1)).setAlarmState(true); 
     }
 
-    /* 
+    
    @Test
    public void SetSpeedLimitMuchLessAsReferenceSpeed()
     {
@@ -38,7 +38,7 @@ public class TrainSensorTest {
 
         verify(mocUser, times(1)).setAlarmState(true);   
     }
-    */
+    
 
     @Test
     public void SetSpeedLimitWithoutAlert()
