@@ -30,12 +30,28 @@ public class TrainSensorTest {
 
    @Test
    public void SetSpeedLimitMuchLessAsReferenceSpeed()
+    {
+        when(mocController.getReferenceSpeed()).thenReturn(150);
+
+        sensor.overrideSpeedLimit(50);
+
+        verify(mocUser, times(1)).setAlarmState(true);   
+    }
+
+    @Test
+    public void SetSpeedLimitWithoutAlert()
+    {
+        sensor.overrideSpeedLimit(50);
+
+        verify(mocUser, times(1)).setAlarmState(false); 
+    }
+
+  @Test
+  public void SetTooHighSpeedLimit()
   {
-      when(mocController.getReferenceSpeed()).thenReturn(150);
+      sensor.overrideSpeedLimit(501);
 
-      sensor.overrideSpeedLimit(50);
-
-      verify(mocUser, times(1)).setAlarmState(true);   
-  }
+      verify(mocUser, times(1)).setAlarmState(true);
+  }   
 
 }
