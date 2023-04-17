@@ -7,13 +7,21 @@ import static org.mockito.Mockito.*;
 
 public class TrainSensorTest {
 
+    TrainController mocController;
+	TrainSensor sensor;
+	TrainUser mocUser;
+
     @Before
     public void before() {
-        // TODO Add initializations
+        mocController = mock(TrainControllerImpl.class);
+        mocUser = mock(TrainUserImpl.class);
+        sensor = new TrainSensorImpl(mocController, mocUser); 
     }
 
     @Test
-    public void ThisIsAnExampleTestStub() {
-        // TODO Delete this and add test cases based on the issues
+    public void SetSpeedLimitToNegative() {
+        mocUser.setSpeedLimit(-1);
+
+        verify(mocUser, times(1)).setAlarmState(true); 
     }
 }
