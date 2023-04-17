@@ -34,13 +34,13 @@ public class TrainUserImpl implements TrainUser {
 	}
 
 	@Override
-	boolean getAlarmState()
+	public boolean getAlarmState()
 	{
 		return alarmState; 
 	}	
 
 	@Override
-	void setAlarmState(boolean bAlarm)
+	public void setAlarmState(boolean bAlarm)
 	{
 		alarmState = bAlarm; 
 	}	
