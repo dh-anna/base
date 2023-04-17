@@ -9,10 +9,19 @@ public class TrainSensorImpl implements TrainSensor {
 	private TrainController controller;
 	private TrainUser user;
 	private int speedLimit = 5;
-
+	private Timer timer;
+	private TimerTask task;
+	private long period = 1000L;
 	public TrainSensorImpl(TrainController controller, TrainUser user) {
 		this.controller = controller;
 		this.user = user;
+		task = new TimerTask() {
+        	public void run() {
+            	controller.followSpeed();
+        	}
+    	};
+		timer = new Timer();
+		timer.schedule(task, 0, period);
 	}
 
 	@Override
